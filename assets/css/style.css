@@ -1,0 +1,164 @@
+/* GERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.jogo-forca,
+.resultado {
+    display: none;
+}
+
+.container {
+    text-align: center;
+    padding: 40px 15px;
+    max-width: 760px;
+}
+
+/* JOGO DA FORCA */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.jogo-forca h2 {
+    font-size: 1rem;
+}
+
+.jogo-forca .palavra-secreta {
+    letter-spacing: .5rem;
+    padding: 30px 0 0;
+    font-weight: 700;
+}
+
+.jogo-forca .btn-letra,
+.jogo-forca .btn-dica {
+    margin-bottom: 5px;
+}
+
+.jogo-forca .jogar-novamente,
+.resultado .jogar-novamente {
+    margin-top: 20px;
+    font-size: .8rem;
+}
+
+/* RESULTADO */
+.resultado {
+    padding: 30px 0;
+}
+
+.resultado h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.resultado p {
+    font-size: .8rem;
+    margin-bottom: 0px;
+}
+
+.resultado form {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.resultado entry {
+    font-weight: 300;
+    font-size: .8rem;
+}
+
+/* FORCAR */
+.forca-boneco {
+    position: relative;
+    max-width: 60px;
+    height: 95px;
+    margin: 0 auto;
+}
+
+.forca-boneco .barra-topo {
+    position: absolute;
+    background-color: var(--bs-body-color);
+    width: 100%;
+    height: 5px;
+    top: 0;
+    left: -5px;
+}
+
+.forca-boneco .barra-lateral {
+    position: absolute;
+    background-color: var(--bs-body-color);
+    width: 5px;
+    height: 95px;
+    top: 0;
+    left: -5px;
+}
+
+.cabeca {
+    background-color: var(--bs-body-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    display: none;
+}
+
+.tronco {
+    background-color: var(--bs-body-color);
+    width: 5px;
+    height: 40px;
+    position: absolute;
+    top: 35px;
+    left: 24px;
+    display: none;
+}
+
+.braco-esquerdo {
+    background-color: var(--bs-body-color);
+    width: 5px;
+    height: 30px;
+    position: absolute;
+    top: 25px;
+    left: 14px;
+    transform: rotate(45deg);
+    display: none;
+}
+
+.braco-direito {
+    background-color: var(--bs-body-color);
+    width: 5px;
+    height: 30px;
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    transform: rotate(135deg);
+    display: none;
+}
+
+.perna-esquerda {
+    background-color: var(--bs-body-color);
+    width: 5px;
+    height: 30px;
+    position: absolute;
+    bottom: 0px;
+    left: 14px;
+    transform: rotate(45deg);
+    display: none;
+}
+
+.perna-direita {
+    background-color: var(--bs-body-color);
+    width: 5px;
+    height: 30px;
+    position: absolute;
+    bottom: 0px;
+    left: 35px;
+    transform: rotate(135deg);
+    display: none;
+}
+
+.active {
+    display: block;
+}

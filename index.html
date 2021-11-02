@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+    <section class="container">
+        <h1>Jogo da Forca</h1>
+
+        <div class="row jogo-forca active">
+            <h2>Tente adivinhar! Clique sobre as letras para tentar formar a palavra secreta.</h2>
+
+            <div class="row d-flex align-items-center mt-4 mb-3">
+                <div class="col-md-1 forca-boneco">
+                    <div class="forca">
+                        <div class="barra-topo"></div>
+                        <div class="barra-lateral"></div>
+                    </div>
+                    <div class="corpo-boneco">
+                        <div class="boneco cabeca"></div>
+                        <div class="boneco tronco"></div>
+                        <div class="boneco braco-esquerdo"></div>
+                        <div class="boneco braco-direito"></div>
+                        <div class="boneco perna-esquerda"></div>
+                        <div class="boneco perna-direita"></div>
+                    </div>
+                </div>
+                <div class="col-md-12 palavra-secreta"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 pb-3">
+                    <button class="btn btn-outline-secondary btn-letra">A</button>
+                    <button class="btn btn-outline-secondary btn-letra">B</button>
+                    <button class="btn btn-outline-secondary btn-letra">C</button>
+                    <button class="btn btn-outline-secondary btn-letra">D</button>
+                    <button class="btn btn-outline-secondary btn-letra">E</button>
+                    <button class="btn btn-outline-secondary btn-letra">F</button>
+                    <button class="btn btn-outline-secondary btn-letra">G</button>
+                    <button class="btn btn-outline-secondary btn-letra">H</button>
+                    <button class="btn btn-outline-secondary btn-letra">I</button>
+                    <button class="btn btn-outline-secondary btn-letra">J</button>
+                    <button class="btn btn-outline-secondary btn-letra">K</button>
+                    <button class="btn btn-outline-secondary btn-letra">L</button>
+                    <button class="btn btn-outline-secondary btn-letra">M</button>
+                    <button class="btn btn-outline-secondary btn-letra">N</button>
+                    <button class="btn btn-outline-secondary btn-letra">O</button>
+                    <button class="btn btn-outline-secondary btn-letra">P</button>
+                    <button class="btn btn-outline-secondary btn-letra">Q</button>
+                    <button class="btn btn-outline-secondary btn-letra">R</button>
+                    <button class="btn btn-outline-secondary btn-letra">S</button>
+                    <button class="btn btn-outline-secondary btn-letra">T</button>
+                    <button class="btn btn-outline-secondary btn-letra">U</button>
+                    <button class="btn btn-outline-secondary btn-letra">V</button>
+                    <button class="btn btn-outline-secondary btn-letra">W</button>
+                    <button class="btn btn-outline-secondary btn-letra">X</button>
+                    <button class="btn btn-outline-secondary btn-letra">Y</button>
+                    <button class="btn btn-outline-secondary btn-letra">Z</button>
+                    <button class="btn btn-outline-primary btn-dica" onclick="Palavra.dica()">Dica</button>
+                </div>
+    
+                <div class="col-12">
+                    <button class="btn btn-primary jogar-novamente" onclick="DOM.novaPalavra()">NOVA PALAVRA</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row resultado">
+            <div class="col">
+                <h2 class="titulo-resultado"></h2>
+                <p>A palavra secreta era:</p>
+                <div class="significado-palavra"></div>
+                <button class="btn btn-primary jogar-novamente" onclick="DOM.novoJogo()">NOVO JOGO</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
