@@ -122,36 +122,32 @@ const Palavra = {
         this.dicas = 0;
     },
     verificaSePalavraPossuiLetra(letraChutada) {
-        if (!this.verificaLetraChutada(letraChutada)) {
-            const palavraSecretaMaiuscula = this.palavraSecreta.word.toUpperCase();
-            const palavraSecretaSemAcento = palavraSecretaMaiuscula.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const palavraSecretaMaiuscula = this.palavraSecreta.word.toUpperCase();
+        const palavraSecretaSemAcento = palavraSecretaMaiuscula.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-            if (palavraSecretaSemAcento.includes(letraChutada)) {
-                let palavraSecretaArray = palavraSecretaSemAcento.split('');
-                let letrasOriginais = [];
-                let letrasIndex = [];
-                for (let i = 0; i < palavraSecretaArray.length; i++) {
-                    if (palavraSecretaArray[i] === letraChutada) {
-                        letrasOriginais.push(this.palavraSecreta.word.charAt(i));
-                        letrasIndex.push(i);
-                        this.letrasChutadasCorretamente.push(palavraSecretaArray[i]);
-                    }
-                }
-
-                DOM.descriptografarLetra(letrasOriginais, letrasIndex);
-                this.verificaSeGanhou();
-            } else {
-                this.letrasChutadasIncorretamente.push(letraChutada);
-
-                this.verificaSePerder();
-                if (this.letrasChutadasIncorretamente.length <= 6) {
-                    DOM.montarBoneco(this.letrasChutadasIncorretamente.length - 1);
+        if (palavraSecretaSemAcento.includes(letraChutada)) {
+            let palavraSecretaArray = palavraSecretaSemAcento.split('');
+            let letrasOriginais = [];
+            let letrasIndex = [];
+            for (let i = 0; i < palavraSecretaArray.length; i++) {
+                if (palavraSecretaArray[i] === letraChutada) {
+                    letrasOriginais.push(this.palavraSecreta.word.charAt(i));
+                    letrasIndex.push(i);
+                    this.letrasChutadasCorretamente.push(palavraSecretaArray[i]);
                 }
             }
-            this.letrasChutadas.push(letraChutada);
+
+            DOM.descriptografarLetra(letrasOriginais, letrasIndex);
+            this.verificaSeGanhou();
         } else {
-            alert(`Você já chutou a letra ${letraChutada}`);
+            this.letrasChutadasIncorretamente.push(letraChutada);
+
+            this.verificaSePerder();
+            if (this.letrasChutadasIncorretamente.length <= 6) {
+                DOM.montarBoneco(this.letrasChutadasIncorretamente.length - 1);
+            }
         }
+        this.letrasChutadas.push(letraChutada);
     },
     verificaLetraChutada(letraChutada) {
         for (const letra of this.letrasChutadas) {
