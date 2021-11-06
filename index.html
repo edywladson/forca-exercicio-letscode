@@ -68,11 +68,20 @@
                     <button class="btn btn-outline-secondary btn-letra">X</button>
                     <button class="btn btn-outline-secondary btn-letra">Y</button>
                     <button class="btn btn-outline-secondary btn-letra">Z</button>
-                    <button class="btn btn-outline-primary btn-dica" onclick="Palavra.dica()">Dica</button>
+                    <button class="btn btn-outline-primary btn-dica" >Dica</button>
                 </div>
-
                 <div class="col-12">
-                    <button class="btn btn-primary jogar-novamente" onclick="DOM.novaPalavra()">NOVA PALAVRA</button>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" id="palavra-completa" placeholder="Chute aqui a palavra completa">
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary mb-3" id="btn-chutar-palavra">Chutar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary jogar-novamente" id="btn-nova-palavra">NOVA PALAVRA</button>
                 </div>
             </div>
         </div>
@@ -82,14 +91,13 @@
                 <h2 class="titulo-resultado"></h2>
                 <p>A palavra secreta era:</p>
                 <div class="significado-palavra"></div>
-                <button class="btn btn-primary jogar-novamente" onclick="DOM.novoJogo()">NOVO JOGO</button>
+                <button class="btn btn-primary jogar-novamente" id="btn-novo-jogo">NOVO JOGO</button>
             </div>
         </div>
     </section>
 
     <script src="./assets/js/bootstrap.min.js"></script>
-    <!-- <script src="./script.js"></script> -->
-    <script src="./assets/js/script.js"></script>
+    <script src="./script3.js"></script>
 </body>
 
 </html>
