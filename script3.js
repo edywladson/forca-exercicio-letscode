@@ -1,8 +1,18 @@
+// [] criar localStorege score
+//    [] pontuação por acerto
+//    [] regra de dicas
+//    [] regra de nova palavra
+// [] criar localStorege estado do jogo
+
+// palavra
+// letras corretas
+// letras incorretas
+// score
+
 class Game {
     constructor() {
         this.Forca = new Forca;
         this.Palavra = new Palavra;
-        this.chutesIncorretos = 0;
         this.pontuacao = 0;
         DOM.cliqueBotaoNovoJogo(this);
         DOM.cliqueBotaoAlfabeto(this);
@@ -13,10 +23,12 @@ class Game {
     }
   
     async init() {
+        this.chutesIncorretos = 0;
+        this.letrasErradas = [];
+        this.letrasCorretas = [];
         await this.Palavra.pesquisarPalavra();
         await this.Palavra.getPalavra();
         console.log(this.Palavra.getPalavra());
-        this.chutesIncorretos = 0;
         this.Palavra.pesquisarSignificado(this.Palavra.getPalavra().word)
         this.Palavra.getSignificadoDaPalavra();
         this.encriptarPalavraSecreta();
@@ -34,12 +46,10 @@ class Game {
                 this.pontuacao++
                 let letraOriginal = this.Palavra.getPalavra().word.charAt(i);
                 palavraSecretaEncriptada.splice(i, 1, letraOriginal);
-                console.log(this.pontuacao)
+                console.log(this.pontuacao);
             }
         }
         
-        
-  
         DOM.palavra.textContent = palavraSecretaEncriptada.join('').toUpperCase();
     }
   
@@ -68,6 +78,24 @@ class Game {
         console.log(this.Palavra.getPalavra().word.charAt(letraDica), letraDica)
   
         
+    }
+
+    salvar() {
+        const dataGame = {
+            "score": this.pontuacao,
+            "state": {
+                "palavra": this.Palavra.getPalavra(),
+                "significadoPalavra": this.Palavra.getSignificadoDaPalavra(),
+                "letrasCorretas": this.letrasCorretas,
+                "letrasIncorretas": this.letrasErradas,
+            }
+        }
+
+        localStorage.setItem("dataGame", JSON.stringify(dataGame));
+    }
+
+    carregar() {
+        return JSON.parse(localStorage.getItem("dataGame"));
     }
   
     ganhou(win) {
@@ -168,9 +196,12 @@ class Game {
                 if (palavra) {
                     botao.classList.add("btn-outline-success");
                     Game.desencriptarLetra(palavra, botao.textContent);
+                    Game.letrasCorretas.push(botao.textContent);
                     Game.ganhou();
                 } else {
                     botao.classList.add("btn-outline-danger");
+                    Game.letrasErradas.push(botao.textContent);
+
                     Game.chutesIncorretos++;
                     let chutes = Game.chutesIncorretos;
                     Game.perdeu()
@@ -178,6 +209,8 @@ class Game {
                         Game.Forca.montarBoneco(chutes - 1);
                     }
                 }
+
+                Game.salvar();
             });
         }
     },
